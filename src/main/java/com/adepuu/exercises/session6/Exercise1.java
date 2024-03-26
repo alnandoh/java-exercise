@@ -12,7 +12,7 @@ public class Exercise1 {
      * Input: 1, 2, 3, a, b, 4, 5, q
      * Output: 3
      *
-     * Explanation: print “Invalid input. Please enter a valid number or 'q' to finish.” if user not inserting the expected number or character.
+     * Explanation: print "Invalid input. Please enter a valid number or 'q' to finish." if user not inserting the expected number or character.
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class Exercise1 {
         }
 
         if(count>0){
-            double average =(double) sum/count;
+            double average = (double) sum/count;
             System.out.println("Average:"+average);
         }else {
             System.out.println("Please input a number to count the average");
