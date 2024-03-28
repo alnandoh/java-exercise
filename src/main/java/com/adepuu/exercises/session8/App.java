@@ -1,5 +1,7 @@
 package com.adepuu.exercises.session8;
 
+import java.util.Scanner;
+
 public class App {
     /**
      * Manages user registration, login, and task management for the To-Do List application.
@@ -45,5 +47,67 @@ public class App {
          Connect all the functionalities with the related menu ;)
          GL HF! ;)
         */
+        Scanner scanner = new Scanner(System.in);
+        UserManager userManager = new UserManager();
+        TaskManager taskManager = new TaskManager();
+
+        while (true) {
+            // Display menu
+            System.out.println("1. Register");
+            System.out.println("2. Login");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (choice) {
+                case 1:
+                    userManager.registerUser(scanner);
+                    break;
+                case 2:
+                    User loggedInUser = userManager.login(scanner);
+                    if (loggedInUser != null) {
+                        taskMenu(scanner, taskManager, loggedInUser);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+    private static void taskMenu(Scanner scanner, TaskManager taskManager, User loggedInUser) {
+        while (true) {
+            // Display task management menu
+            System.out.println("\nTask Management Menu");
+            System.out.println("1. Add Task");
+            System.out.println("2. View Tasks");
+            System.out.println("3. Delete Task");
+            System.out.println("4. Log out");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (choice) {
+                case 1:
+                    taskManager.addTask(scanner, loggedInUser);
+                    break;
+                case 2:
+                    taskManager.viewTasks(loggedInUser);
+                    break;
+                case 3:
+                    taskManager.deleteTask(scanner, loggedInUser);
+                    break;
+                case 4:
+                    System.out.println("Logging out...");
+                    return; // Exit task management menu
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
     }
 }
