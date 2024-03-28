@@ -19,6 +19,19 @@ public class TicketingSystem {
      * Start your project from the main method below ;) have fun!
      */
     public static void main(String[] args) {
-
+        Event jkt48 = new Event("Jkt48", 200);
+        Event belieber = new Event("Belieber", 1000);
+        Event swifties = new Event("Swifties", 100);
+        Event[] events = {jkt48, belieber, swifties};
+        User user = new User(events);
+        Ticket ticket = user.bookTicket(jkt48, "Alnando");
+        Ticket ticket1 = user.bookTicket(belieber, "Ivan");
+        Ticket ticket2 = user.bookTicket(swifties, "Devi");
+        Ticket ticket3 = user.bookTicket(swifties, "Syanti");
+        user.validateTicket(ticket);
+        user.validateTicket(ticket1);
+        user.validateTicket(ticket2);
+        user.validateTicket(ticket3);
+        System.out.println(Ticket.getSales());
     }
 }
